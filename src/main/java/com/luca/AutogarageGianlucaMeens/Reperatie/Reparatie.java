@@ -3,11 +3,11 @@ package com.luca.AutogarageGianlucaMeens.Reperatie;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Autos")
+@Table(name = "Reparaties")
 public class Reparatie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column(name = "Schade")

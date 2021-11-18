@@ -9,7 +9,7 @@ import java.util.Date;
 public class Klant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "Naam")
@@ -17,9 +17,6 @@ public class Klant {
 
     @Column(name = "Achternaam")
     String achternaam;
-
-    @Column(name = "GebDatum")
-    Date gebDatum;
 
     @Column(name = "TelefoonNummer")
     String telefoonNummer;
@@ -38,10 +35,6 @@ public class Klant {
 
     public String getAchternaam() {
         return achternaam;
-    }
-
-    public Date getGebDatum() {
-        return gebDatum;
     }
 
     public String getTelefoonNummer() {
@@ -63,10 +56,6 @@ public class Klant {
 
     public void setAchternaam(String achternaam) {
         this.achternaam = achternaam;
-    }
-
-    public void setGebDatum(Date gebDatum) {
-        this.gebDatum = gebDatum;
     }
 
     public void setTelefoonNummer(String telefoonNummer) {

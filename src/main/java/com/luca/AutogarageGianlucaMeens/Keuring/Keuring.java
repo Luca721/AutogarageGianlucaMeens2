@@ -14,7 +14,7 @@ enum ReperatieGoedkeuring{
 public class Keuring {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne
