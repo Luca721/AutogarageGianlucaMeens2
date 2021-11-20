@@ -1,6 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.klant;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface KlantRepository extends CrudRepository<Klant, Long> {
+public interface KlantRepository extends JpaRepository<Klant, Long> {
 }
