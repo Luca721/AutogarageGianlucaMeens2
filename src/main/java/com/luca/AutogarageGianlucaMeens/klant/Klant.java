@@ -20,7 +20,7 @@ public class Klant {
     String achternaam;
 
     @Column(name = "TelefoonNummer")
-    String telefoonNummer;
+    String telefoon_nummer;
 
     @Column(name = "Email")
     String email;
@@ -31,7 +31,7 @@ public class Klant {
         this.id = id;
         this.naam = naam;
         this.achternaam = achternaam;
-        this.telefoonNummer = telefoonNummer;
+        this.telefoon_nummer = telefoonNummer;
         this.email = email;
     }
 
@@ -49,7 +49,7 @@ public class Klant {
     }
 
     public String getTelefoonNummer() {
-        return telefoonNummer;
+        return telefoon_nummer;
     }
 
     public String getEmail() {
@@ -70,7 +70,7 @@ public class Klant {
     }
 
     public void setTelefoonNummer(String telefoonNummer) {
-        this.telefoonNummer = telefoonNummer;
+        this.telefoon_nummer = telefoonNummer;
     }
 
     public void setEmail(String email) {
@@ -86,17 +86,17 @@ public class Klant {
             return false;
         Klant klant = (Klant) o;
         return Objects.equals(this.id, klant.id) && Objects.equals(this.naam, klant.naam) && Objects.equals(this.achternaam, klant.achternaam)
-                && Objects.equals(this.email, klant.email) && Objects.equals(this.telefoonNummer, klant.telefoonNummer);
+                && Objects.equals(this.email, klant.email) && Objects.equals(this.telefoon_nummer, klant.telefoon_nummer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.naam, this.achternaam, this.email, this.telefoonNummer);
+        return Objects.hash(this.id, this.naam, this.achternaam, this.email, this.telefoon_nummer);
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "id=" + this.id + ", naam='" + this.naam + " " + this.achternaam + '\'' + ", contact='" + this.email + " "  + this.telefoonNummer + '\'' + '}';
+        return "Employee{" + "id=" + this.id + ", naam='" + this.naam + " " + this.achternaam + '\'' + ", contact='" + this.email + " "  + this.telefoon_nummer + '\'' + '}';
     }
 }
 

@@ -18,41 +18,22 @@ public class KlantController {
         this.klantRepository = klantRepository;
     }
 
-    @GetMapping("/klanten")
-    List<Klant> all(){
+
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Klant> getAllUsers() {
         return klantRepository.findAll();
     }
 
-    @PostMapping("/newKlant")
-    Klant newKlant(@RequestBody Klant newKlant){
+    @PostMapping("/employees")
+    Klant newKlant(@RequestBody Klant newKlant) {
         return klantRepository.save(newKlant);
     }
 
-//    @PostMapping(path = "/addKlant")
-//    public @ResponseBody String addNewKlant(@RequestParam String naam,
-//                                            @RequestParam String achternaam,
-//                                            @RequestParam String email,
-//                                            @RequestParam String telefoonnummer){
-//        Klant klant = new Klant();
-//        klant.setNaam(naam);
-//        klant.setAchternaam(achternaam);
-//        klant.setEmail(email);
-//        klant.setTelefoonNummer(telefoonnummer);
-//        return "saved";
-//    }
+//    @GetMapping("/employees/{id}")
+//    Klant one(@PathVariable Long id) {
 //
-//    @PostMapping("/books")
-//    public String addBook(@RequestBody String naam,
-//                                          String achternaam,
-//                                          String email,
-//                                          String telefoonnummer) {
-//        Klant klant = new Klant();
-//        klant.setNaam(naam);
-//        klant.setAchternaam(achternaam);
-//        klant.setEmail(email);
-//        klant.setTelefoonNummer(telefoonnummer);
-//
-//        return "done";
+//        return klantRepository.findById(id)
+//                .orElseThrow(() -> new KlantNotFou(id));
 //    }
 //
 //    @GetMapping("/klanten")
