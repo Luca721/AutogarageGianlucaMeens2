@@ -1,5 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.Auto;
 
+import com.luca.AutogarageGianlucaMeens.AutoPapieren.AutoPapieren;
 import com.luca.AutogarageGianlucaMeens.klant.Klant;
 
 import javax.persistence.*;
@@ -28,6 +29,10 @@ public class Auto {
     @Column(name = "Bouwjaar")
     int bouwjaar;
 
+    @OneToOne
+    @JoinColumn(name = "AutoPapierenID")
+    AutoPapieren autopapieren;
+
     //setters
     public void setId(long id) {
         this.id = id;
@@ -53,6 +58,8 @@ public class Auto {
         this.bouwjaar = bouwjaar;
     }
 
+    public void setAutopapieren(AutoPapieren autopapieren){this.autopapieren = autopapieren;}
+
     //getters
     public long getId() {
         return id;
@@ -76,5 +83,9 @@ public class Auto {
 
     public int getBouwjaar() {
         return bouwjaar;
+    }
+
+    public AutoPapieren getAutopapieren() {
+        return autopapieren;
     }
 }
