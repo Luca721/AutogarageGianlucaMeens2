@@ -1,6 +1,7 @@
 package com.luca.AutogarageGianlucaMeens.Auto;
 
 import com.luca.AutogarageGianlucaMeens.Exceptions.AutoNotFoundException;
+import com.luca.AutogarageGianlucaMeens.klant.KlantRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 public class AutoController {
 
     private AutoRepository autoRepository;
+
+    AutoController(AutoRepository autoRepository){
+        this.autoRepository = autoRepository;
+    }
 
     @PostMapping("/newAuto")
     Auto newAuto(@RequestBody Auto newAuto) {

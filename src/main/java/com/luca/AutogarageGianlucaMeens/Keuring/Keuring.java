@@ -6,7 +6,16 @@ import com.luca.AutogarageGianlucaMeens.Auto.Auto;
 import javax.persistence.*;
 
 enum ReperatieGoedkeuring{
-    Goedgekeurt, afgekeurt, geenReactie
+    Goedgekeurt("1"), afgekeurt("2"), geenReactie("3");
+
+    private String keuringCode;
+    ReperatieGoedkeuring(String keuringCode) {
+        this.keuringCode = keuringCode;
+    }
+
+    public String getKeuringCode() {
+        return keuringCode;
+    }
 }
 
 @Entity
