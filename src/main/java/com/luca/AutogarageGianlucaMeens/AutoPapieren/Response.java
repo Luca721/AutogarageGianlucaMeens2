@@ -1,10 +1,13 @@
-package com.luca.AutogarageGianlucaMeens;
+package com.luca.AutogarageGianlucaMeens.AutoPapieren;
 
 public class Response {
     private String fileName;
     private String fileDownloadUri;
     private String fileType;
     private long size;
+
+    public Response() {
+    }
 
     public Response(String fileName, String fileDownloadUri, String fileType, long size) {
         this.fileName = fileName;

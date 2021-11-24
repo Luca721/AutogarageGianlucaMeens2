@@ -65,9 +65,7 @@ public class Auto {
         return id;
     }
 
-    public Klant getEigenaarID() {
-        return eigenaarID;
-    }
+    public Klant getEigenaarID() { return eigenaarID; }
 
     public String getKenteken() {
         return Kenteken;

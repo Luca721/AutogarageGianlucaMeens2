@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/garage")
+@RequestMapping(path = "/Autos")
 public class AutoPapierenController {
 
     private AutoPapierenService autoPapierenService;
@@ -28,8 +28,7 @@ public class AutoPapierenController {
                 .path(fileName.getFileName())
                 .toUriString();
 
-        return new Response(fileName.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize());
+        return new Response();
     }
 
     @PostMapping("/uploadMultipleFiles")

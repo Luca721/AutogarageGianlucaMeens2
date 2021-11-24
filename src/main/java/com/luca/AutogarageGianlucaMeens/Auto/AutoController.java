@@ -1,39 +1,53 @@
 package com.luca.AutogarageGianlucaMeens.Auto;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.luca.AutogarageGianlucaMeens.Exceptions.AutoNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 @RestController
-@RequestMapping(path = "/garage")
+@RequestMapping(path = "/Autos")
 public class AutoController {
 
     private AutoRepository autoRepository;
 
-    @PostMapping(path = "/addAutos")
-    public @ResponseBody String addNewAuto(@RequestParam String kenteken
-            , @RequestParam String merk
-            , @RequestParam String model
-            , @RequestParam int bouwjaar){
-
-        Auto auto = new Auto();
-        auto.setKenteken(kenteken);
-        auto.setMerk(merk);
-        auto.setModel(model);
-        auto.setBouwjaar(bouwjaar);
-        return "saved";
+    @PostMapping("/newAuto")
+    Auto newAuto(@RequestBody Auto newAuto) {
+        return autoRepository.save(newAuto);
     }
 
-    @GetMapping("/autos")
-    public @ResponseBody Iterable<Auto> GetAllAutos() {
+    @GetMapping(path="/allAutos")
+    public @ResponseBody Iterable<Auto> getAllAutos() {
         return autoRepository.findAll();
     }
 
-    @ExceptionHandler
-    void handleIllegalArgumentException(IllegalArgumentException e, HttpServletResponse response) throws IOException {
-        response.sendError(HttpStatus.BAD_REQUEST.value());
+    @GetMapping("/Auto/{id}")
+    Auto one(@PathVariable Long id) {
+
+        return autoRepository.findById(id)
+                .orElseThrow(() ->new AutoNotFoundException(id));
     }
+
+    @PutMapping("/Auto/{id}")
+    Auto ReplaceAuto(@RequestBody Auto newAuto, @PathVariable Long id) {
+
+        return autoRepository.findById(id)
+                .map(Auto -> {
+                    Auto.setEigenaarID(Auto.getEigenaarID());
+                    Auto.setKenteken((Auto.getKenteken()));
+                    Auto.setMerk(Auto.getMerk());
+                    Auto.setModel(Auto.getModel());
+                    Auto.setBouwjaar(Auto.getBouwjaar());
+                    Auto.setAutopapieren(Auto.getAutopapieren());
+                    return autoRepository.save(Auto);
+                })
+                .orElseGet(() -> {
+                    newAuto.setId(id);
+                    return autoRepository.save(newAuto);
+                });
+    }
+
+    @DeleteMapping("/Auto/{id}")
+    void deleteEmployee(@PathVariable Long id) {
+        autoRepository.deleteById(id);
+    }
+
 }
