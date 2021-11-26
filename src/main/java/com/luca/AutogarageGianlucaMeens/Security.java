@@ -1,8 +1,6 @@
 package com.luca.AutogarageGianlucaMeens;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter {
 
+    //
+    //user roles met de bijbehoorende gebruikersnamen en wachtwoorden
+    //
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -26,6 +27,10 @@ public class Security extends WebSecurityConfigurerAdapter {
         ;
     }
 
+
+    //
+    // toegang tot paths wordt gekoppeld aan een role
+    //
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -43,6 +48,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/Onderdelen/**").hasRole( "BACKOFFICE")
                 .antMatchers("/reparaties/**").hasAnyRole("MONTEUR")
                 .antMatchers("/Keuringen/**").hasAnyRole("MONTEUR", "ADMIN")
+                .antMatchers("/AutoPapieren/**").hasAnyRole( "ADMIN")
                 .antMatchers("/").permitAll()
                 .anyRequest()
                 .authenticated()

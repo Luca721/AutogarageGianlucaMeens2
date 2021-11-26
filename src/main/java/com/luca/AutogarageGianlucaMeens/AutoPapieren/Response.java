@@ -6,9 +6,6 @@ public class Response {
     private String fileType;
     private long size;
 
-    public Response() {
-    }
-
     public Response(String fileName, String fileDownloadUri, String fileType, long size) {
         this.fileName = fileName;
         this.fileDownloadUri = fileDownloadUri;
