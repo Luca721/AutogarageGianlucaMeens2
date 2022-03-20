@@ -31,7 +31,7 @@ public class CarController {
     }
 
     @PutMapping("/Auto/{id}")
-    Car ReplaceAuto(@RequestBody Car newCar, @PathVariable Long id) {
+    Car ReplaceCar(@RequestBody Car newCar, @PathVariable Long id) {
 
         return carRepository.findById(id)
                 .map(Car -> {
@@ -40,7 +40,7 @@ public class CarController {
                     Car.setBrand(Car.getBrand());
                     Car.setModel(Car.getModel());
                     Car.setVersionYear(Car.getVersionYear());
-                    Car.setAutopapieren(Car.getAutopapieren());
+                    Car.setCarPapers(Car.getCarPapers());
                     return carRepository.save(Car);
                 })
                 .orElseGet(() -> {
@@ -50,7 +50,7 @@ public class CarController {
     }
 
     @DeleteMapping("/Auto/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deleteCar(@PathVariable Long id) {
         carRepository.deleteById(id);
     }
 

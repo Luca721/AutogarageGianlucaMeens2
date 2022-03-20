@@ -58,14 +58,18 @@ public class Car {
         this.versionYear = versionYear;
     }
 
-    public void setAutopapieren(CarPapers carPapers){this.carPapers = carPapers;}
+    public void setCarPapers(CarPapers carPapers) {
+        this.carPapers = carPapers;
+    }
 
     //getters
     public long getId() {
         return id;
     }
 
-    public Customer getOwnerID() { return ownerID; }
+    public Customer getOwnerID() {
+        return ownerID;
+    }
 
     public String getLicensePlate() {
         return licensePlate;
@@ -83,7 +87,6 @@ public class Car {
         return versionYear;
     }
 
-    public CarPapers getAutopapieren() {
-        return carPapers;
-    }
+    public CarPapers getCarPapers() { return carPapers; }
+
 }
