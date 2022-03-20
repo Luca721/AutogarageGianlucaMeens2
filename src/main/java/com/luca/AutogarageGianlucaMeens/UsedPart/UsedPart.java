@@ -1,7 +1,7 @@
 package com.luca.AutogarageGianlucaMeens.UsedPart;
 
 import com.luca.AutogarageGianlucaMeens.Part.part;
-import com.luca.AutogarageGianlucaMeens.Reperatie.Repair;
+import com.luca.AutogarageGianlucaMeens.Repair.Repair;
 
 import javax.persistence.*;
 
