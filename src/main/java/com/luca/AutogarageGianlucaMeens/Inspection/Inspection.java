@@ -13,9 +13,6 @@ enum RepairAccept {
         this.inspectionCode = inspectionCode;
     }
 
-    public String getInspectionCode() {
-        return inspectionCode;
-    }
 }
 
 @Entity
@@ -57,7 +54,7 @@ public class Inspection {
         this.expectedPrice = expectedPrice;
     }
 
-    public void setReperatieGoedkeuring(RepairAccept repairAccept) {
+    public void setRepairAccept(RepairAccept repairAccept) {
         RepairAccept = repairAccept;
     }
 
@@ -78,7 +75,7 @@ public class Inspection {
         return expectedPrice;
     }
 
-    public RepairAccept getReperatieGoedkeuring() {
+    public RepairAccept getRepairAccept() {
         return RepairAccept;
     }
 }
