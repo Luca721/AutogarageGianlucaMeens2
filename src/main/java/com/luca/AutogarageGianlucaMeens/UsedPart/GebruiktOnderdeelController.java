@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.GebruiktOnderdeel;
+package com.luca.AutogarageGianlucaMeens.UsedPart;
 
 import com.luca.AutogarageGianlucaMeens.Exceptions.GebruiktOnderdeelNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -14,32 +14,32 @@ public class GebruiktOnderdeelController {
     }
 
     @PostMapping("/newGebruiktOnderdeel")
-    GebruiktOnderdeel newGebruiktOnderdeel(@RequestBody GebruiktOnderdeel newGebruiktOnderdeel) {
-        return gebruiktOnderdeelRepository.save(newGebruiktOnderdeel);
+    UsedPart newGebruiktOnderdeel(@RequestBody UsedPart newUsedPart) {
+        return gebruiktOnderdeelRepository.save(newUsedPart);
     }
 
     @GetMapping(path="/allGebruikteOnderdelen")
     public @ResponseBody
-    Iterable<GebruiktOnderdeel> getAllGebruikteOnderdelen() {
+    Iterable<UsedPart> getAllGebruikteOnderdelen() {
         return gebruiktOnderdeelRepository.findAll();
     }
 
     @GetMapping("/GebruiktOnderdeel/{id}")
-    GebruiktOnderdeel one(@PathVariable Long id) {
+    UsedPart one(@PathVariable Long id) {
 
         return gebruiktOnderdeelRepository.findById(id)
                 .orElseThrow(() ->new GebruiktOnderdeelNotFoundException(id));
     }
 
     @PutMapping("/GebruiktOnderdeel/{id}")
-    GebruiktOnderdeel replaceGebruiktOnderdeel(@RequestBody GebruiktOnderdeel newGebruiktOndrdeel, @PathVariable Long id) {
+    UsedPart replaceGebruiktOnderdeel(@RequestBody UsedPart newGebruiktOndrdeel, @PathVariable Long id) {
 
         return gebruiktOnderdeelRepository.findById(id)
-                .map(GebruiktOnderdeel -> {
-                    GebruiktOnderdeel.setOnderdeelID(GebruiktOnderdeel.getOnderdeelID());
-                    GebruiktOnderdeel.setReperatieID(GebruiktOnderdeel.getReperatieID());
-                    GebruiktOnderdeel.setAantal(GebruiktOnderdeel.getAantal());
-                    return gebruiktOnderdeelRepository.save(GebruiktOnderdeel);
+                .map(UsedPart -> {
+                    UsedPart.setPartID(UsedPart.getPartID());
+                    UsedPart.setRepairID(UsedPart.getRepairID());
+                    UsedPart.setAmount(UsedPart.getAmount());
+                    return gebruiktOnderdeelRepository.save(UsedPart);
                 })
                 .orElseGet(() -> {
                     newGebruiktOndrdeel.setId(id);
