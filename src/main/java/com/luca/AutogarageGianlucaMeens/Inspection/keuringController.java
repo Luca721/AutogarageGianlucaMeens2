@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Keuring;
+package com.luca.AutogarageGianlucaMeens.Inspection;
 
 import com.luca.AutogarageGianlucaMeens.Exceptions.KeuringNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -14,37 +14,37 @@ public class keuringController {
     }
 
     @PostMapping("/newKeuring")
-    Keuring newKeuring(@RequestBody Keuring newKeuring) {
-        return keuringRepository.save(newKeuring);
+    Inspection newKeuring(@RequestBody Inspection newInspection) {
+        return keuringRepository.save(newInspection);
     }
 
     @GetMapping(path="/allKeuringen")
     public @ResponseBody
-    Iterable<Keuring> getAllKeuringen() {
+    Iterable<Inspection> getAllKeuringen() {
         return keuringRepository.findAll();
     }
 
     @GetMapping("/Keuring/{id}")
-    Keuring one(@PathVariable Long id) {
+    Inspection one(@PathVariable Long id) {
 
         return keuringRepository.findById(id)
                 .orElseThrow(() ->new KeuringNotFoundException(id));
     }
 
     @PutMapping("/Keuring/{id}")
-    Keuring replaceKeuring(@RequestBody Keuring newKeuring, @PathVariable Long id) {
+    Inspection replaceKeuring(@RequestBody Inspection newInspection, @PathVariable Long id) {
 
         return keuringRepository.findById(id)
-                .map(Keuring -> {
-                    Keuring.setAutoID(Keuring.getAutoID());
-                    Keuring.setSchade(Keuring.getSchade());
-                    Keuring.setVerwachtePrijs(Keuring.getVerwachtePrijs());
-                    Keuring.setReperatieGoedkeuring(Keuring.getReperatieGoedkeuring());
-                    return keuringRepository.save(Keuring);
+                .map(Inspection -> {
+                    Inspection.setAutoID(Inspection.getAutoID());
+                    Inspection.setDamage(Inspection.getDamage());
+                    Inspection.setExpectedPrice(Inspection.getExpectedPrice());
+                    Inspection.setReperatieGoedkeuring(Inspection.getReperatieGoedkeuring());
+                    return keuringRepository.save(Inspection);
                 })
                 .orElseGet(() -> {
-                    newKeuring.setId(id);
-                    return keuringRepository.save(newKeuring);
+                    newInspection.setId(id);
+                    return keuringRepository.save(newInspection);
                 });
     }
 
