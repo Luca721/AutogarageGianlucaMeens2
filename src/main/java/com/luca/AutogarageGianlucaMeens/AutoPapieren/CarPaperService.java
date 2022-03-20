@@ -11,10 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Service
-public class AutoPapierenService {
+public class CarPaperService {
 
     @Autowired
-    private AutoPapierenRepository autoPapierenRepository;
+    private CarPaperRepository carPaperRepository;
 
     public CarPapers storeFile(MultipartFile file) {
         // Normalize file name
@@ -28,18 +28,18 @@ public class AutoPapierenService {
 
             CarPapers dbFile = new CarPapers(fileName, file.getContentType(), file.getBytes());
 
-            return autoPapierenRepository.save(dbFile);
+            return carPaperRepository.save(dbFile);
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
     public CarPapers getFile(Long fileId) {
-        return autoPapierenRepository.findById(fileId)
+        return carPaperRepository.findById(fileId)
                 .orElseThrow(() -> new StorageFileNotFoundException(fileId));
     }
 
     public void DelFile(Long id){
-        autoPapierenRepository.deleteById(id);
+        carPaperRepository.deleteById(id);
     }
 }

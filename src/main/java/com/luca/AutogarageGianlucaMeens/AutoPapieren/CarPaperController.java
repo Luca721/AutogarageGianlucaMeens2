@@ -13,19 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
-@RequestMapping(path = "/AutoPapieren")
-public class AutopapierenController {
+@RequestMapping(path = "/Carpapers")
+public class CarPaperController {
 
     @Autowired
-    private AutoPapierenService autoPapierenService;
+    private CarPaperService carPaperService;
 
 
     //
-    //Post method om de autopapieren te uploaden
+    //Post method to upload your carpapers
     //
-    @PostMapping("/PostAutopapieren")
+    @PostMapping("/PostCarPapers")
     public Response uploadFile(@RequestParam("File") MultipartFile file) {
-        CarPapers carPapers = autoPapierenService.storeFile(file);
+        CarPapers carPapers = carPaperService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -40,10 +40,10 @@ public class AutopapierenController {
     //
     //Get method om de Autopapiern op te vragen
     //
-    @GetMapping("/GetAutoPapieren/{id}")
+    @GetMapping("/GetCarpapers/{id}")
     public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
         // Load file as Resource
-        CarPapers databaseFile = autoPapierenService.getFile(id);
+        CarPapers databaseFile = carPaperService.getFile(id);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(databaseFile.getFileType()))
@@ -55,8 +55,8 @@ public class AutopapierenController {
     //
     //Delete method om de autopapieren te verwijderen
     //
-    @DeleteMapping("/AutoPapieren/{id}")
-    void deleteAutoPapieren(@PathVariable Long id) {
-        autoPapierenService.DelFile(id);
+    @DeleteMapping("/Carpapers/{id}")
+    void deleteCarPapers(@PathVariable Long id) {
+        carPaperService.DelFile(id);
     }
 }
