@@ -1,6 +1,5 @@
 package com.luca.AutogarageGianlucaMeens.Part;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.PartNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,6 +1,5 @@
 package com.luca.AutogarageGianlucaMeens.Car;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.CarNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

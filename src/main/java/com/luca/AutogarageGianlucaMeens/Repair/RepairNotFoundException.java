@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.Repair;
 
 public class RepairNotFoundException extends RuntimeException {
 

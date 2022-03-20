@@ -2,8 +2,6 @@ package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 import java.io.IOException;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.FileStorageException;
-import com.luca.AutogarageGianlucaMeens.Exceptions.StorageFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

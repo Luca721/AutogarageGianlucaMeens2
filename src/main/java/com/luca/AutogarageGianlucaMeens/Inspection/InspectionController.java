@@ -1,6 +1,5 @@
 package com.luca.AutogarageGianlucaMeens.Inspection;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.InspectionNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

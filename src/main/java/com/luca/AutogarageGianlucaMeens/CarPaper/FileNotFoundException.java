@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 public class FileNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 1L;

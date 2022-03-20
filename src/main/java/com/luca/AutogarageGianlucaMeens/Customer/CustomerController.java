@@ -1,6 +1,5 @@
 package com.luca.AutogarageGianlucaMeens.Customer;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.CustomerNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 

@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 public class StorageFileNotFoundException extends RuntimeException {
 

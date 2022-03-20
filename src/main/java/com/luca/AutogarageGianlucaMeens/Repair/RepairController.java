@@ -1,7 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.Repair;
 
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.RepairNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

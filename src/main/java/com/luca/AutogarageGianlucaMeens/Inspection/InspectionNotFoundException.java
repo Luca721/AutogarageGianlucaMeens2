@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.Inspection;
 
 public class InspectionNotFoundException extends RuntimeException {
 

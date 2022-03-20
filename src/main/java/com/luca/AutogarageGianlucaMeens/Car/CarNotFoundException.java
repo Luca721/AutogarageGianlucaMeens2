@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.Car;
 
 public class CarNotFoundException extends RuntimeException {
 

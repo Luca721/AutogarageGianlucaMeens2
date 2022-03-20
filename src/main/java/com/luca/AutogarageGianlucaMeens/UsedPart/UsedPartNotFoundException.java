@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Exceptions;
+package com.luca.AutogarageGianlucaMeens.UsedPart;
 
 public class UsedPartNotFoundException extends RuntimeException {
 
