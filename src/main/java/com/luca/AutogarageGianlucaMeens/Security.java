@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class Security extends WebSecurityConfigurerAdapter {
 
     //
-    //user roles met de bijbehoorende gebruikersnamen en wachtwoorden
+    //user roles with their username and password
     //
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,9 +28,6 @@ public class Security extends WebSecurityConfigurerAdapter {
     }
 
 
-    //
-    // toegang tot paths wordt gekoppeld aan een role
-    //
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -42,12 +39,12 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/autopapieren/**").hasRole("ADMIN")
-                .antMatchers("/klanten/**").hasAnyRole("MONTEUR","ADMIN")
-                .antMatchers("/Autos/**").hasAnyRole("MONTEUR", "ADMIN")
+                .antMatchers("/klanten/**").hasAnyRole("ADMIN")
+                .antMatchers("/Autos/**").hasAnyRole( "ADMIN")
                 .antMatchers("/gebruikteOnderdelen/**").hasAnyRole("MONTEUR", "ADMIN")
                 .antMatchers("/Onderdelen/**").hasRole( "BACKOFFICE")
                 .antMatchers("/reparaties/**").hasAnyRole("MONTEUR")
-                .antMatchers("/Keuringen/**").hasAnyRole("MONTEUR", "ADMIN")
+                .antMatchers("/Keuringen/**").hasAnyRole( "MONTEUR","ADMIN")
                 .antMatchers("/AutoPapieren/**").hasAnyRole( "ADMIN")
                 .antMatchers("/").permitAll()
                 .anyRequest()
