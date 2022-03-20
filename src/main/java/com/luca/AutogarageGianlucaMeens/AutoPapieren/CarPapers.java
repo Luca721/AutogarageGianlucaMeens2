@@ -5,8 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Autopapieren")
-public class AutoPapieren {
+@Table(name = "CarPapers")
+public class CarPapers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,11 +18,11 @@ public class AutoPapieren {
     @Lob
     private byte[] data;
 
-    public AutoPapieren() {
+    public CarPapers() {
 
     }
 
-    public AutoPapieren(String fileName, String fileType, byte[] data) {
+    public CarPapers(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
