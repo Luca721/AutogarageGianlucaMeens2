@@ -1,6 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.UsedPart;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.GebruiktOnderdeelNotFoundException;
+import com.luca.AutogarageGianlucaMeens.Exceptions.UsedPartNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +28,7 @@ public class GebruiktOnderdeelController {
     UsedPart one(@PathVariable Long id) {
 
         return gebruiktOnderdeelRepository.findById(id)
-                .orElseThrow(() ->new GebruiktOnderdeelNotFoundException(id));
+                .orElseThrow(() ->new UsedPartNotFoundException(id));
     }
 
     @PutMapping("/GebruiktOnderdeel/{id}")

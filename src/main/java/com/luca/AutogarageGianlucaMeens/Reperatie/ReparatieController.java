@@ -1,7 +1,7 @@
 package com.luca.AutogarageGianlucaMeens.Reperatie;
 
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.ReparatieNotFoundException;
+import com.luca.AutogarageGianlucaMeens.Exceptions.RepairNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,7 +29,7 @@ public class ReparatieController {
     Repair one(@PathVariable Long id) {
 
         return reparatieRepository.findById(id)
-                .orElseThrow(() ->new ReparatieNotFoundException(id));
+                .orElseThrow(() ->new RepairNotFoundException(id));
     }
 
     @PutMapping("/reparatie/{id}")

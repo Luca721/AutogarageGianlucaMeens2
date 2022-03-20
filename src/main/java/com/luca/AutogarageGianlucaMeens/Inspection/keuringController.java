@@ -1,6 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.Inspection;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.KeuringNotFoundException;
+import com.luca.AutogarageGianlucaMeens.Exceptions.InspectionNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +28,7 @@ public class keuringController {
     Inspection one(@PathVariable Long id) {
 
         return keuringRepository.findById(id)
-                .orElseThrow(() ->new KeuringNotFoundException(id));
+                .orElseThrow(() ->new InspectionNotFoundException(id));
     }
 
     @PutMapping("/Keuring/{id}")

@@ -1,6 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.klant;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.KlantNotFoundException;
+import com.luca.AutogarageGianlucaMeens.Exceptions.CustomerNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -28,7 +28,7 @@ public class KlantController {
     Customer one(@PathVariable Long id) {
 
         return klantRepository.findById(id)
-                .orElseThrow(() ->new KlantNotFoundException(id));
+                .orElseThrow(() ->new CustomerNotFoundException(id));
     }
 
     @PutMapping("/Klant/{id}")

@@ -1,8 +1,8 @@
 package com.luca.AutogarageGianlucaMeens.Exceptions;
 
-public class AutoNotFoundException extends RuntimeException {
+public class CarNotFoundException extends RuntimeException {
 
-    public AutoNotFoundException(Long id) {
+    public CarNotFoundException(Long id) {
         super("Could not find Auto " + id);
     }
 }

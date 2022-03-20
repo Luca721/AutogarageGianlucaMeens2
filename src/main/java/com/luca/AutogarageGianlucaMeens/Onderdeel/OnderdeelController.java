@@ -1,6 +1,6 @@
 package com.luca.AutogarageGianlucaMeens.Onderdeel;
 
-import com.luca.AutogarageGianlucaMeens.Exceptions.OnderdeelnotFoundException;
+import com.luca.AutogarageGianlucaMeens.Exceptions.PartNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +28,7 @@ public class OnderdeelController {
     part one(@PathVariable Long id) {
 
         return onderdeelRepository.findById(id)
-                .orElseThrow(() ->new OnderdeelnotFoundException(id));
+                .orElseThrow(() ->new PartNotFoundException(id));
     }
 
     @PutMapping("/Onderdeel/{id}")
