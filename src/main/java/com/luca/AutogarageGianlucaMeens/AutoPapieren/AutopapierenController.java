@@ -25,14 +25,14 @@ public class AutopapierenController {
     //
     @PostMapping("/PostAutopapieren")
     public Response uploadFile(@RequestParam("File") MultipartFile file) {
-        AutoPapieren autoPapieren = autoPapierenService.storeFile(file);
+        CarPapers carPapers = autoPapierenService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
-                .path(autoPapieren.getFileName())
+                .path(carPapers.getFileName())
                 .toUriString();
 
-        return new Response(autoPapieren.getFileName(), fileDownloadUri,
+        return new Response(carPapers.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
 
@@ -43,7 +43,7 @@ public class AutopapierenController {
     @GetMapping("/GetAutoPapieren/{id}")
     public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
         // Load file as Resource
-        AutoPapieren databaseFile = autoPapierenService.getFile(id);
+        CarPapers databaseFile = autoPapierenService.getFile(id);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(databaseFile.getFileType()))

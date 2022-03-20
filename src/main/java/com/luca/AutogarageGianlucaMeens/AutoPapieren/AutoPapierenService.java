@@ -16,7 +16,7 @@ public class AutoPapierenService {
     @Autowired
     private AutoPapierenRepository autoPapierenRepository;
 
-    public AutoPapieren storeFile(MultipartFile file) {
+    public CarPapers storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -26,7 +26,7 @@ public class AutoPapierenService {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            AutoPapieren dbFile = new AutoPapieren(fileName, file.getContentType(), file.getBytes());
+            CarPapers dbFile = new CarPapers(fileName, file.getContentType(), file.getBytes());
 
             return autoPapierenRepository.save(dbFile);
         } catch (IOException ex) {
@@ -34,7 +34,7 @@ public class AutoPapierenService {
         }
     }
 
-    public AutoPapieren getFile(Long fileId) {
+    public CarPapers getFile(Long fileId) {
         return autoPapierenRepository.findById(fileId)
                 .orElseThrow(() -> new StorageFileNotFoundException(fileId));
     }

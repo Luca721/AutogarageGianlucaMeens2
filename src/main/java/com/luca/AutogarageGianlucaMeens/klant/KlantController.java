@@ -15,36 +15,36 @@ public class KlantController {
     }
 
     @PostMapping("/NewKlant")
-    Klant newKlant(@RequestBody Klant newKlant) {
-        return klantRepository.save(newKlant);
+    Customer newKlant(@RequestBody Customer newCustomer) {
+        return klantRepository.save(newCustomer);
     }
 
     @GetMapping(path="/allKlanten")
-    public @ResponseBody Iterable<Klant> getAllUsers() {
+    public @ResponseBody Iterable<Customer> getAllUsers() {
         return klantRepository.findAll();
     }
 
     @GetMapping("/Klant/{id}")
-    Klant one(@PathVariable Long id) {
+    Customer one(@PathVariable Long id) {
 
         return klantRepository.findById(id)
                 .orElseThrow(() ->new KlantNotFoundException(id));
     }
 
     @PutMapping("/Klant/{id}")
-    Klant replaceEmployee(@RequestBody Klant newKlant, @PathVariable Long id) {
+    Customer replaceEmployee(@RequestBody Customer newCustomer, @PathVariable Long id) {
 
         return klantRepository.findById(id)
-                .map(klant -> {
-                    klant.setNaam(newKlant.getNaam());
-                    klant.setAchternaam(klant.getAchternaam());
-                    klant.setEmail(klant.getEmail());
-                    klant.setTelefoonNummer(klant.getTelefoonNummer());
-                    return klantRepository.save(klant);
+                .map(customer -> {
+                    customer.setName(newCustomer.getName());
+                    customer.setLastName(customer.getLastName());
+                    customer.setEmail(customer.getEmail());
+                    customer.setPhoneNumber(customer.getPhoneNumber());
+                    return klantRepository.save(customer);
                 })
                 .orElseGet(() -> {
-                    newKlant.setId(id);
-                    return klantRepository.save(newKlant);
+                    newCustomer.setId(id);
+                    return klantRepository.save(newCustomer);
                 });
     }
 

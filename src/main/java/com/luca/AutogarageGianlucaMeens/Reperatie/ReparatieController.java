@@ -15,36 +15,36 @@ public class ReparatieController {
     }
 
     @PostMapping("/newReparatie")
-    Reparatie newReparatie(@RequestBody Reparatie newReparatie) {
-        return reparatieRepository.save(newReparatie);
+    Repair newReparatie(@RequestBody Repair newRepair) {
+        return reparatieRepository.save(newRepair);
     }
 
     @GetMapping(path="/allreparaties")
     public @ResponseBody
-    Iterable<Reparatie> getAllReparaties() {
+    Iterable<Repair> getAllReparaties() {
         return reparatieRepository.findAll();
     }
 
     @GetMapping("/reparatie/{id}")
-    Reparatie one(@PathVariable Long id) {
+    Repair one(@PathVariable Long id) {
 
         return reparatieRepository.findById(id)
                 .orElseThrow(() ->new ReparatieNotFoundException(id));
     }
 
     @PutMapping("/reparatie/{id}")
-    Reparatie replaceReparatie(@RequestBody Reparatie newReparatie, @PathVariable Long id) {
+    Repair replaceReparatie(@RequestBody Repair newRepair, @PathVariable Long id) {
 
         return reparatieRepository.findById(id)
-                .map(Reparatie -> {
-                    Reparatie.setSchade(Reparatie.getSchade());
-                    Reparatie.setKosten(Reparatie.getKosten());
-                    Reparatie.setPrijs(Reparatie.getPrijs());
-                    return reparatieRepository.save(Reparatie);
+                .map(Repair -> {
+                    Repair.setDamage(Repair.getDamage());
+                    Repair.setCosts(Repair.getCosts());
+                    Repair.setPrice(Repair.getPrice());
+                    return reparatieRepository.save(Repair);
                 })
                 .orElseGet(() -> {
-                    newReparatie.setId(id);
-                    return reparatieRepository.save(newReparatie);
+                    newRepair.setId(id);
+                    return reparatieRepository.save(newRepair);
                 });
     }
 

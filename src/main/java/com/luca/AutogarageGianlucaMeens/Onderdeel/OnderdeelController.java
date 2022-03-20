@@ -14,37 +14,37 @@ public class OnderdeelController {
     }
 
     @PostMapping("/newOnderdeel")
-    Onderdeel newOnderdeel(@RequestBody Onderdeel newOnderdeel) {
-        return onderdeelRepository.save(newOnderdeel);
+    part newOnderdeel(@RequestBody part newPart) {
+        return onderdeelRepository.save(newPart);
     }
 
     @GetMapping(path="/allOnderdelen")
     public @ResponseBody
-    Iterable<Onderdeel> getAllOnderdelen() {
+    Iterable<part> getAllOnderdelen() {
         return onderdeelRepository.findAll();
     }
 
     @GetMapping("/Onderdeel/{id}")
-    Onderdeel one(@PathVariable Long id) {
+    part one(@PathVariable Long id) {
 
         return onderdeelRepository.findById(id)
                 .orElseThrow(() ->new OnderdeelnotFoundException(id));
     }
 
     @PutMapping("/Onderdeel/{id}")
-    Onderdeel replaceOnderdeel(@RequestBody Onderdeel newOnderdeel, @PathVariable Long id) {
+    part replaceOnderdeel(@RequestBody part newPart, @PathVariable Long id) {
 
         return onderdeelRepository.findById(id)
-                .map(Onderdeel -> {
-                    Onderdeel.setNaam(Onderdeel.getNaam());
-                    Onderdeel.setInkoopprijs(Onderdeel.getInkoopprijs());
-                    Onderdeel.setVerkoopprijs(Onderdeel.getVerkoopprijs());
-                    Onderdeel.setVoorraad(Onderdeel.getVoorraad());
-                    return onderdeelRepository.save(Onderdeel);
+                .map(part -> {
+                    part.setName(part.getName());
+                    part.setCost(part.getCost());
+                    part.setSalesprice(part.getSalesprice());
+                    part.setStock(part.getStock());
+                    return onderdeelRepository.save(part);
                 })
                 .orElseGet(() -> {
-                    newOnderdeel.setId(id);
-                    return onderdeelRepository.save(newOnderdeel);
+                    newPart.setId(id);
+                    return onderdeelRepository.save(newPart);
                 });
     }
 

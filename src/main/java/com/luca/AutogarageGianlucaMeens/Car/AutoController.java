@@ -1,7 +1,6 @@
-package com.luca.AutogarageGianlucaMeens.Auto;
+package com.luca.AutogarageGianlucaMeens.Car;
 
 import com.luca.AutogarageGianlucaMeens.Exceptions.AutoNotFoundException;
-import com.luca.AutogarageGianlucaMeens.klant.KlantRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,38 +14,38 @@ public class AutoController {
     }
 
     @PostMapping("/newAuto")
-    Auto newAuto(@RequestBody Auto newAuto) {
-        return autoRepository.save(newAuto);
+    Car newAuto(@RequestBody Car newCar) {
+        return autoRepository.save(newCar);
     }
 
     @GetMapping(path="/allAutos")
-    public @ResponseBody Iterable<Auto> getAllAutos() {
+    public @ResponseBody Iterable<Car> getAllAutos() {
         return autoRepository.findAll();
     }
 
     @GetMapping("/Auto/{id}")
-    Auto one(@PathVariable Long id) {
+    Car one(@PathVariable Long id) {
 
         return autoRepository.findById(id)
                 .orElseThrow(() ->new AutoNotFoundException(id));
     }
 
     @PutMapping("/Auto/{id}")
-    Auto ReplaceAuto(@RequestBody Auto newAuto, @PathVariable Long id) {
+    Car ReplaceAuto(@RequestBody Car newCar, @PathVariable Long id) {
 
         return autoRepository.findById(id)
-                .map(Auto -> {
-                    Auto.setEigenaarID(Auto.getEigenaarID());
-                    Auto.setKenteken((Auto.getKenteken()));
-                    Auto.setMerk(Auto.getMerk());
-                    Auto.setModel(Auto.getModel());
-                    Auto.setBouwjaar(Auto.getBouwjaar());
-                    Auto.setAutopapieren(Auto.getAutopapieren());
-                    return autoRepository.save(Auto);
+                .map(Car -> {
+                    Car.setOwnerID(Car.getOwnerID());
+                    Car.setLicensePlate((Car.getLicensePlate()));
+                    Car.setBrand(Car.getBrand());
+                    Car.setModel(Car.getModel());
+                    Car.setVersionYear(Car.getVersionYear());
+                    Car.setAutopapieren(Car.getAutopapieren());
+                    return autoRepository.save(Car);
                 })
                 .orElseGet(() -> {
-                    newAuto.setId(id);
-                    return autoRepository.save(newAuto);
+                    newCar.setId(id);
+                    return autoRepository.save(newCar);
                 });
     }
 
