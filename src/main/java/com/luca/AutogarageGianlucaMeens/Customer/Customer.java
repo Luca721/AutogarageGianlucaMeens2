@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.klant;
+package com.luca.AutogarageGianlucaMeens.Customer;
 
 
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.AutoPapieren;
+package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;

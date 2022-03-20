@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.AutoPapieren;
+package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.Onderdeel;
+package com.luca.AutogarageGianlucaMeens.Part;
 
 import javax.persistence.*;
 

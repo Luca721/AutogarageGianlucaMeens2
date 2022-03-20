@@ -1,7 +1,7 @@
 package com.luca.AutogarageGianlucaMeens.Car;
 
 import com.luca.AutogarageGianlucaMeens.CarPaper.CarPapers;
-import com.luca.AutogarageGianlucaMeens.klant.Customer;
+import com.luca.AutogarageGianlucaMeens.Customer.Customer;
 
 import javax.persistence.*;
 

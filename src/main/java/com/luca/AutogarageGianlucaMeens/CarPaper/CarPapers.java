@@ -1,6 +1,4 @@
-package com.luca.AutogarageGianlucaMeens.AutoPapieren;
-
-import org.hibernate.annotations.GenericGenerator;
+package com.luca.AutogarageGianlucaMeens.CarPaper;
 
 import javax.persistence.*;
 
