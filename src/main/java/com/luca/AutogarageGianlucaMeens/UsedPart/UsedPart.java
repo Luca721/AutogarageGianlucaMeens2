@@ -33,8 +33,8 @@ public class UsedPart {
         this.partID = partID;
     }
 
-    public void setRepairID(Repair reperatieID) {
-        this.repairID = reperatieID;
+    public void setRepairID(Repair repairID) {
+        this.repairID = repairID;
     }
 
     public void setAmount(int amount) {
