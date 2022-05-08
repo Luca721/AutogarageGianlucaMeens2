@@ -5,16 +5,6 @@ import com.luca.AutogarageGianlucaMeens.Car.Car;
 
 import javax.persistence.*;
 
-enum RepairAccept {
-    accept("1"), decline("2"), awaitingReaction("3");
-
-    private String inspectionCode;
-    RepairAccept(String inspectionCode) {
-        this.inspectionCode = inspectionCode;
-    }
-
-}
-
 @Entity
 @Table(name = "Inspection")
 public class Inspection {
@@ -35,7 +25,7 @@ public class Inspection {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "RepairAccept")
-    RepairAccept RepairAccept;
+    String RepairAccept;
 
     //setters
     public void setId(Long id) {
@@ -54,8 +44,8 @@ public class Inspection {
         this.expectedPrice = expectedPrice;
     }
 
-    public void setRepairAccept(RepairAccept repairAccept) {
-        RepairAccept = repairAccept;
+    public void setRepairAccept(String repairAccept) {
+        this.RepairAccept = repairAccept;
     }
 
     //getters
@@ -75,7 +65,7 @@ public class Inspection {
         return expectedPrice;
     }
 
-    public RepairAccept getRepairAccept() {
+    public String getRepairAccept() {
         return RepairAccept;
     }
 }
