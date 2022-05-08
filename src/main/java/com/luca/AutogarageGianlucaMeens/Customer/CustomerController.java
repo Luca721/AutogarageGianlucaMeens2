@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path = "/Klanten")
+@RequestMapping(path = "/Customer")
 public class CustomerController {
 
     private CustomerRepository customerRepository;
