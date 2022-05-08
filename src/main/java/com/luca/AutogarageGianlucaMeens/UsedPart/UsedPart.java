@@ -17,7 +17,7 @@ public class UsedPart {
     @JoinColumn(name = "partID")
     part partID;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "repairID")
     Repair repairID;
 
