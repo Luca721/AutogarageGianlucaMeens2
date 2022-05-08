@@ -30,7 +30,7 @@ public class PartController {
                 .orElseThrow(() ->new PartNotFoundException(id));
     }
 
-    @PutMapping("/Onderdeel/{id}")
+    @PutMapping("/Part/{id}")
     part replacePart(@RequestBody part newPart, @PathVariable Long id) {
 
         return partRepository.findById(id)

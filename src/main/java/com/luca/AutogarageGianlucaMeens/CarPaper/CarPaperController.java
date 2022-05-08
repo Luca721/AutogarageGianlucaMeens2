@@ -19,10 +19,6 @@ public class CarPaperController {
     @Autowired
     private CarPaperService carPaperService;
 
-
-    //
-    //Post method to upload your carpapers
-    //
     @PostMapping("/PostCarPapers")
     public Response uploadFile(@RequestParam("File") MultipartFile file) {
         CarPapers carPapers = carPaperService.storeFile(file);
@@ -36,10 +32,6 @@ public class CarPaperController {
                 file.getContentType(), file.getSize());
     }
 
-
-    //
-    //Get method om de Autopapiern op te vragen
-    //
     @GetMapping("/GetCarpapers/{id}")
     public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
         // Load file as Resource
@@ -51,10 +43,6 @@ public class CarPaperController {
                 .body(new ByteArrayResource(databaseFile.getData()));
     }
 
-
-    //
-    //Delete method om de autopapieren te verwijderen
-    //
     @DeleteMapping("/Carpapers/{id}")
     void deleteCarPapers(@PathVariable Long id) {
         carPaperService.DelFile(id);
