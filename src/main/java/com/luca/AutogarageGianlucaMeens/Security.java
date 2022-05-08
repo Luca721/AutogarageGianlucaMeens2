@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter {
 
-    //
-    //user roles with their username and password
-    //
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
