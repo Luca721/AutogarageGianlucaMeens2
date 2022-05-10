@@ -47,7 +47,7 @@ public class PartController {
                 });
     }
 
-    @DeleteMapping("/Onderdeel/{id}")
+    @DeleteMapping("/Part/{id}")
     void deletePart(@PathVariable Long id) {
         partRepository.deleteById(id);
     }

@@ -47,7 +47,7 @@ public class RepairController {
                 });
     }
 
-    @DeleteMapping("/reparatie/{id}")
+    @DeleteMapping("/Repair/{id}")
     void deleteRepair(@PathVariable Long id) {
         repairRepository.deleteById(id);
     }

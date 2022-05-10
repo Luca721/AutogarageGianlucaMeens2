@@ -20,7 +20,7 @@ public class CarPaperController {
     private CarPaperService carPaperService;
 
     @PostMapping("/PostCarPapers")
-    public Response uploadFile(@RequestParam("File") MultipartFile file) {
+    public Response uploadFile(@RequestParam("file") MultipartFile file) {
         CarPapers carPapers = carPaperService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
