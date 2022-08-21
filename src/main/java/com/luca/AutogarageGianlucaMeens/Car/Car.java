@@ -89,4 +89,14 @@ public class Car {
 
     public CarPapers getCarPapers() { return carPapers; }
 
+    public Car() {
+    }
+
+    public Car(long id, String licensePlate, String brand, String model, int versionYear) {
+        this.id = id;
+        this.licensePlate = licensePlate;
+        this.brand = brand;
+        this.model = model;
+        this.versionYear = versionYear;
+    }
 }
