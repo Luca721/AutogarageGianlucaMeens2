@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "parts")
-public class part {
+public class Part {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -20,6 +20,18 @@ public class part {
 
     @Column(name = "stock")
     int stock;
+
+    public Part(Long id, String name, double cost, double salesprice, int stock) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.salesprice = salesprice;
+        this.stock = stock;
+    }
+
+    public Part() {
+        
+    }
 
     //setters
     public void setId(Long id) {

@@ -13,25 +13,25 @@ public class PartController {
     }
 
     @PostMapping("/newPart")
-    part newPart(@RequestBody part newPart) {
+    Part newPart(@RequestBody Part newPart) {
         return partRepository.save(newPart);
     }
 
     @GetMapping(path="/allParts")
     public @ResponseBody
-    Iterable<part> getAllPart() {
+    Iterable<Part> getAllPart() {
         return partRepository.findAll();
     }
 
     @GetMapping("/Part/{id}")
-    part getOnePart(@PathVariable Long id) {
+    Part getOnePart(@PathVariable Long id) {
 
         return partRepository.findById(id)
                 .orElseThrow(() ->new PartNotFoundException(id));
     }
 
     @PutMapping("/Part/{id}")
-    part replacePart(@RequestBody part newPart, @PathVariable Long id) {
+    Part replacePart(@RequestBody Part newPart, @PathVariable Long id) {
 
         return partRepository.findById(id)
                 .map(part -> {
