@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -39,7 +38,6 @@ public class CustomerControllerTest {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    @WithMockUser(username = "super", password = "super123")
     void shouldGetAllCustomers() throws  Exception{
         long id1 = 1;
         long id2 = 2;
@@ -47,19 +45,18 @@ public class CustomerControllerTest {
                 Arrays.asList(  new Customer(id1, "Luca", "Meens", "0612345678", "gmm.meens@belastingdienst.nl"),
                                 new Customer(id2, "Tom", "Jansen", "0612345678", "abcd@defg.nl")));
         when(customerRepository.findAll()).thenReturn(customers);
-        mockMvc.perform(get("/Autos/allAutos"))
+        mockMvc.perform(get("/Customer/allCustomers"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(customers.size()))
                 .andDo(print());
     }
 
     @Test
-    @WithMockUser(username = "super", password = "super123")
     void shouldGetOneCustomer() throws  Exception{
         long id = 1;
         Customer customer = new Customer(id, "Luca", "Meens", "0612345678", "gmm.meens@belastingdienst.nl");
         when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
-        mockMvc.perform(get("/Autos/allAutos/1", id))
+        mockMvc.perform(get("/Customer/Customer/1", id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(id))
                 .andExpect(jsonPath("$.name").value(customer.getName()))
@@ -70,25 +67,23 @@ public class CustomerControllerTest {
     }
 
     @Test
-    @WithMockUser(username = "super", password = "super123")
     void shouldCreateCustomer() throws Exception {
         long id = 1;
         Customer customer = new Customer(id, "Luca", "Meens", "0612345678", "gmm.meens@belastingdienst.nl");
-        mockMvc.perform(post("/api/tutorials").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/Customer/newCustomer").contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(customer)))
-                .andExpect(status().isCreated())
+                .andExpect(status().isOk())
                 .andDo(print());
     }
 
     @Test
-    @WithMockUser(username = "super", password = "super123")
     void shouldUpdateTutorial() throws Exception {
         long id = 1;
         Customer customer = new Customer(id, "Luca", "Meens", "0612345678", "gmm.meens@belastingdienst.nl");
-        Customer updatedcustomer = new Customer(id, "Luca", "Meens", "0612345678", "gmm.meens@belastingdienst.nl");
+        Customer updatedcustomer = new Customer(id, "Arie", "Bartels", "0612345678", "a.bartels@belastingdienst.nl");
         when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
         when(customerRepository.save(any(Customer.class))).thenReturn(updatedcustomer);
-        mockMvc.perform(put("/api/tutorials/{id}", id).contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/Customer/Customer/1", id).contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updatedcustomer)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(id))
