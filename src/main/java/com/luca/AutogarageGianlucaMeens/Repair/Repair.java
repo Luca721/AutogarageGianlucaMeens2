@@ -19,6 +19,17 @@ public class Repair {
     @Column(name = "price")
     double price;
 
+    public Repair(long id, String damage, double costs, double price) {
+        this.id = id;
+        this.damage = damage;
+        this.costs = costs;
+        this.price = price;
+    }
+
+    public Repair() {
+        
+    }
+
     //setters
     public void setId(long id) {
         this.id = id;
