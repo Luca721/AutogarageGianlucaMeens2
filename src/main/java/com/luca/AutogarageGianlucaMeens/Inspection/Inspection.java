@@ -37,6 +37,16 @@ public class Inspection {
     @Column(name = "RepairAccept")
     RepairAccept RepairAccept;
 
+    public Inspection(Long id, String damage, Double expectedPrice) {
+        this.id = id;
+        this.damage = damage;
+        this.expectedPrice = expectedPrice;
+    }
+
+    public Inspection() {
+
+    }
+
     //setters
     public void setId(Long id) {
         this.id = id;
